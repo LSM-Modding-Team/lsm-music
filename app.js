@@ -21,7 +21,7 @@ function formatTime(seconds) {
 
 function updatePlayback() {
   const playing = !audio.paused && !audio.ended;
-  playButton.firstElementChild.textContent = playing ? 'Ⅱ' : '▶';
+  playButton.firstElementChild.classList.toggle('is-playing', playing);
   playButton.setAttribute('aria-label', playing ? 'Pausar' : 'Reproducir');
   document.querySelector('#playback-state').textContent = currentIndex < 0
     ? 'TU SIGUIENTE CANCIÓN' : playing ? 'SONANDO AHORA' : audio.ended ? 'DISCO FINALIZADO' : 'EN PAUSA';
@@ -29,7 +29,7 @@ function updatePlayback() {
     const active = index === currentIndex;
     card.setAttribute('aria-pressed', String(active));
     card.setAttribute('aria-label', `${active && playing ? 'Pausar' : 'Reproducir'} ${tracks[index].title}`);
-    card.querySelector('.card-play').textContent = active && playing ? 'Ⅱ' : '▶';
+    card.querySelector('.card-play').classList.toggle('is-playing', active && playing);
   });
   if ('mediaSession' in navigator) navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
 }
@@ -69,7 +69,7 @@ function selectTrack(index) {
   audio.pause();
   currentIndex = index;
   const track = tracks[index];
-  audio.replaceChildren(...['ogg', 'mp3'].map((extension) => {
+  audio.replaceChildren(...['mp3', 'ogg'].map((extension) => {
     const source = document.createElement('source');
     source.src = `assets/audio/${track.id}.${extension}`;
     source.type = extension === 'ogg' ? 'audio/ogg' : 'audio/mpeg';
