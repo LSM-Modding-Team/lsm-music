@@ -13,6 +13,16 @@ const muteButton = document.querySelector('#mute');
 const status = document.querySelector('#status');
 let currentIndex = -1;
 let requestId = 0;
+let playbackFailed = false;
+let failedSources = 0;
+
+function showLoadError() {
+  playbackFailed = true;
+  ++requestId;
+  audio.pause();
+  status.textContent = 'No se pudo cargar el audio. Comprueba tu conexión y pulsa reproducir para reintentar.';
+  updatePlayback();
+}
 
 function formatTime(seconds) {
   const value = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
@@ -48,7 +58,11 @@ function updateTimeline() {
 async function startPlayback() {
   const thisRequest = ++requestId;
   status.textContent = '';
-  if (audio.error) audio.load();
+  if (audio.error || playbackFailed) {
+    playbackFailed = false;
+    failedSources = 0;
+    audio.load();
+  }
   try {
     await audio.play();
   } catch (error) {
@@ -68,11 +82,17 @@ function selectTrack(index) {
   ++requestId;
   audio.pause();
   currentIndex = index;
+  playbackFailed = false;
+  failedSources = 0;
   const track = tracks[index];
   audio.replaceChildren(...['mp3', 'ogg'].map((extension) => {
     const source = document.createElement('source');
     source.src = `assets/audio/${track.id}.${extension}`;
     source.type = extension === 'ogg' ? 'audio/ogg' : 'audio/mpeg';
+    source.addEventListener('error', () => {
+      if (!source.isConnected) return;
+      if (++failedSources === 2) showLoadError();
+    });
     return source;
   }));
   audio.load();
@@ -118,8 +138,7 @@ document.querySelector('#next').addEventListener('click', () => moveTrack(1));
 audio.addEventListener('playing', () => { status.textContent = ''; });
 audio.addEventListener('waiting', () => { status.textContent = 'Cargando audio…'; });
 audio.addEventListener('error', () => {
-  if (currentIndex >= 0) status.textContent = 'No se pudo cargar el audio. Comprueba tu conexión y pulsa reproducir para reintentar.';
-  updatePlayback();
+  if (currentIndex >= 0) showLoadError();
 });
 seek.addEventListener('input', () => {
   if (Number.isFinite(audio.duration)) audio.currentTime = Number(seek.value);
