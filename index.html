@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c30">
+  <meta name="description" content="Escucha la Marcha Sanmartiniana y el Himno Sanmartiniano. La colección de discos de LSM Modding Team, a un clic.">
+  <title>LSM Música — Colección sanmartiniana</title>
+  <link rel="icon" href="assets/images/lsm_march.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#coleccion">Ir a los discos</a>
+  <header class="site-header shell">
+    <a class="brand" href="./" aria-label="LSM Música, inicio"><span class="brand-mark" aria-hidden="true">L<span>SM</span></span><span>LSM <strong>Música</strong></span></a>
+    <nav aria-label="Principal"><a class="nav-active" href="#coleccion">La colección</a><a href="https://github.com/LSM-Modding-Team/lsm-music" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span class="tiny-record" aria-hidden="true"></span> ARCHIVO SONORO / LSM MODDING TEAM</p>
+        <h1 id="page-title">La banda sonora<br><em>sanmartiniana.</em></h1>
+        <p class="intro-copy">Dos discos. Una misma historia.<br>Elige una portada y deja que suene.</p>
+      </div>
+      <div class="archive-note"><span class="note-cross" aria-hidden="true">✳</span><p>Del mundo de LSM,<br>directo a tus oídos.</p><span class="small-label">COLECCIÓN ORIGINAL · VOL. 01</span></div>
+    </section>
+
+    <section id="coleccion" aria-labelledby="collection-title">
+      <div class="section-heading"><h2 id="collection-title">Nuestros discos <span>02</span></h2><p>Haz clic para escuchar <span aria-hidden="true">↙</span></p></div>
+      <div class="record-grid">
+        <button class="record-card" data-track="0" type="button" aria-label="Reproducir Marcha Sanmartiniana" aria-pressed="false">
+          <span class="artwork artwork-march"><span class="artwork-top"><span>LADO A</span><span>LSM / 001</span></span><img src="assets/images/lsm_march.png" alt="Disco original de la Marcha Sanmartiniana, con centro rojo y dorado" width="16" height="16"><span class="artwork-bottom"><span class="record-caption">MARCHA<br>SANMARTINIANA</span><span class="card-play" aria-hidden="true">▶</span></span></span>
+          <span class="record-info"><span><span class="record-kind">MARCHA · COLEGIO LIBERTADOR SAN MARTÍN</span><span class="record-title">Marcha Sanmartiniana</span><span class="record-credit">Tobías Vílchez Pinedo</span></span><span class="record-duration">3:50</span></span>
+        </button>
+        <button class="record-card" data-track="1" type="button" aria-label="Reproducir Himno Sanmartiniano" aria-pressed="false">
+          <span class="artwork artwork-anthem"><span class="artwork-top"><span>LADO B</span><span>LSM / 002</span></span><img src="assets/images/lsm_anthem.png" alt="Disco original del Himno Sanmartiniano, con centro dorado y rojo" width="16" height="16"><span class="artwork-bottom"><span class="record-caption">HIMNO<br>SANMARTINIANO</span><span class="card-play" aria-hidden="true">▶</span></span></span>
+          <span class="record-info"><span><span class="record-kind">HIMNO · COLEGIO LIBERTADOR SAN MARTÍN</span><span class="record-title">Himno Sanmartiniano</span><span class="record-credit">Tobías Vílchez Pinedo</span></span><span class="record-duration">1:38</span></span>
+        </button>
+      </div>
+    </section>
+    <footer class="site-footer"><span>Hecho para escuchar, recordar y volver.</span><span>LSM MODDING TEAM <span aria-hidden="true">↗</span></span></footer>
+  </main>
+
+  <section class="player" aria-label="Reproductor de música">
+    <div class="player-inner shell">
+      <div class="now-playing"><div class="player-cover"><img id="player-art" alt="" width="48" height="48" hidden><span id="empty-art" aria-hidden="true">♫</span></div><div class="now-text"><span class="player-eyebrow" id="playback-state">TU SIGUIENTE CANCIÓN</span><h2 id="player-title">Elige un disco</h2><p id="player-credit">La música empieza con un clic.</p></div></div>
+      <div class="transport"><div class="transport-buttons"><button id="previous" class="icon-button" type="button" aria-label="Disco anterior">❮</button><button id="play" class="main-play" type="button" aria-label="Reproducir"><span aria-hidden="true">▶</span></button><button id="next" class="icon-button" type="button" aria-label="Disco siguiente">❯</button></div><div class="timeline"><span id="elapsed">0:00</span><label class="sr-only" for="seek">Posición de reproducción</label><input id="seek" type="range" min="0" max="100" step="0.1" value="0" disabled aria-valuetext="0:00"><span id="duration">0:00</span></div></div>
+      <div class="volume"><button id="mute" class="icon-button" type="button" aria-label="Silenciar" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 4 6 8H2v8h4l5 4V4Z"/><path id="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></button><label class="sr-only" for="volume">Volumen</label><input id="volume" type="range" min="0" max="1" step="0.01" value="0.8"></div>
+    </div>
+    <p id="status" class="player-status" role="status" aria-live="polite"></p>
+  </section>
+  <audio id="audio" preload="none"></audio>
+</body>
+</html>
