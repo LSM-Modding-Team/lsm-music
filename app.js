@@ -3,11 +3,13 @@
 const tracks = [
   { id: 'lsm_march', title: 'Marcha Sanmartiniana', artist: 'Tobías Vílchez Pinedo' },
   { id: 'lsm_anthem', title: 'Himno Sanmartiniano', artist: 'Tobías Vílchez Pinedo' },
-  { id: 'carnaval_macari', title: 'Carnaval Macari', image: 'lsm_anthem' },
-  { id: 'carnaval_huanupampa', title: 'Carnaval Huanupampa', image: 'lsm_anthem' },
-  { id: 'carnaval_huaccana', title: 'Carnaval Huaccana', image: 'lsm_anthem' },
-  { id: 'cofradia_san_miguel', title: 'Cofradía San Miguel', image: 'lsm_anthem' },
-  { id: 'qapackachampa', title: 'Qapackachampa', image: 'lsm_anthem' },
+  { id: 'carnaval_macari', title: 'Carnaval de Macari' },
+  { id: 'carnaval_huanupampa', title: 'Carnaval de Huanupampa' },
+  { id: 'carnaval_huaccana', title: 'Carnaval de Huaccana' },
+  { id: 'cofradia_san_miguel', title: 'Cofradia de San Miguel' },
+  { id: 'qapackachampa', title: 'Qapac Kachampa' },
+  { id: 'himnoperu', title: 'Himno Nacional del Perú' },
+  { id: 'formacion', title: 'Marcha de las Banderas' },
 ];
 const audio = document.querySelector('#audio');
 const cards = [...document.querySelectorAll('[data-track]')];
