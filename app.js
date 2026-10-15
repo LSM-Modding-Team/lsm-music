@@ -3,11 +3,11 @@
 const tracks = [
   { id: 'lsm_march', title: 'Marcha Sanmartiniana', artist: 'Tobías Vílchez Pinedo' },
   { id: 'lsm_anthem', title: 'Himno Sanmartiniano', artist: 'Tobías Vílchez Pinedo' },
-  { id: 'carnaval_macari', title: 'Carnaval de Macari' },
-  { id: 'carnaval_huanupampa', title: 'Carnaval de Huanupampa' },
-  { id: 'carnaval_huaccana', title: 'Carnaval de Huaccana' },
-  { id: 'cofradia_san_miguel', title: 'Cofradia de San Miguel' },
-  { id: 'qapackachampa', title: 'Qapac Kachampa' },
+  { id: 'carnaval_macari', title: '1ro - Carnaval de Macari' },
+  { id: 'carnaval_huanupampa', title: '2do - Carnaval de Huanupampa' },
+  { id: 'carnaval_huaccana', title: '3ro - Carnaval de Huaccana' },
+  { id: 'cofradia_san_miguel', title: '4to - Cofradia de San Miguel' },
+  { id: 'qapackachampa', title: '5to - Qapac Kachampa' },
   { id: 'himnoperu', title: 'Himno Nacional del Perú' },
   { id: 'formacion', title: 'Marcha de las Banderas' },
 ];
