@@ -31,15 +31,12 @@ function formatTime(seconds) {
 
 function updatePlayback() {
   const playing = !audio.paused && !audio.ended;
-  playButton.firstElementChild.classList.toggle('is-playing', playing);
+  playButton.querySelector('use').setAttribute('href', playing ? '#icon-pause' : '#icon-play');
   playButton.setAttribute('aria-label', playing ? 'Pausar' : 'Reproducir');
-  document.querySelector('#playback-state').textContent = currentIndex < 0
-    ? 'TU SIGUIENTE CANCIÓN' : playing ? 'SONANDO AHORA' : audio.ended ? 'DISCO FINALIZADO' : 'EN PAUSA';
   cards.forEach((card, index) => {
     const active = index === currentIndex;
     card.setAttribute('aria-pressed', String(active));
     card.setAttribute('aria-label', `${active && playing ? 'Pausar' : 'Reproducir'} ${tracks[index].title}`);
-    card.querySelector('.card-play').classList.toggle('is-playing', active && playing);
   });
   if ('mediaSession' in navigator) navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
 }
@@ -51,8 +48,6 @@ function updateTimeline() {
   seek.max = ready ? duration : 100;
   seek.value = ready ? audio.currentTime : 0;
   seek.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} de ${formatTime(duration)}`);
-  document.querySelector('#elapsed').textContent = formatTime(audio.currentTime);
-  document.querySelector('#duration').textContent = formatTime(duration);
 }
 
 async function startPlayback() {
@@ -97,11 +92,8 @@ function selectTrack(index) {
   }));
   audio.load();
   document.querySelector('#player-title').textContent = track.title;
-  document.querySelector('#player-credit').textContent = track.artist;
-  const artwork = document.querySelector('#player-art');
-  artwork.src = `assets/images/${track.id}.png`;
-  artwork.hidden = false;
-  document.querySelector('#empty-art').hidden = true;
+  document.title = track.title;
+  document.querySelector('.title-bar img').src = `assets/images/${track.id}.png`;
   updateTimeline();
   updatePlayback();
   if ('mediaSession' in navigator && 'MediaMetadata' in window) {
@@ -131,6 +123,12 @@ function moveTrack(direction) {
 
 cards.forEach((card, index) => card.addEventListener('click', () => selectTrack(index)));
 playButton.addEventListener('click', togglePlayback);
+document.querySelector('#stop').addEventListener('click', () => {
+  ++requestId;
+  audio.pause();
+  if (Number.isFinite(audio.duration)) audio.currentTime = 0;
+  updateTimeline();
+});
 document.querySelector('#previous').addEventListener('click', () => moveTrack(-1));
 document.querySelector('#next').addEventListener('click', () => moveTrack(1));
 ['play', 'pause', 'ended'].forEach((event) => audio.addEventListener(event, updatePlayback));
@@ -160,7 +158,7 @@ audio.addEventListener('volumechange', () => {
   const silent = audio.muted || audio.volume === 0;
   muteButton.setAttribute('aria-label', silent ? 'Activar sonido' : 'Silenciar');
   muteButton.setAttribute('aria-pressed', String(silent));
-  document.querySelector('#sound-waves').style.display = silent ? 'none' : '';
+  muteButton.querySelector('use').setAttribute('href', silent ? '#icon-muted' : '#icon-volume');
   volume.value = audio.muted ? 0 : audio.volume;
 });
 if ('mediaSession' in navigator) {

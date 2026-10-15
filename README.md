@@ -1,6 +1,6 @@
 # LSM Música
 
-Colección musical de **LSM Modding Team**. Pulsa la imagen de un disco para escucharlo; vuelve a pulsarla para pausar o continuar. Incluye Marcha Sanmartiniana e Himno Sanmartiniano, con controles de reproducción, progreso y volumen.
+Reproductor de audio compacto con controles clásicos de escritorio y la paleta del escudo del colegio: rojo `#a92724`, dorado `#c5942a`, marfil `#ebe7d9` y negro `#1e1c1a`. La interfaz solo muestra títulos y controles. Pulsa la imagen de un disco para escucharlo; vuelve a pulsarla para pausar o continuar. Incluye Marcha Sanmartiniana e Himno Sanmartiniano, con controles de reproducción, progreso y volumen.
 
 **Sitio:** https://lsm-modding-team.github.io/lsm-music/
 
@@ -12,7 +12,7 @@ Sitio estático sin dependencias ni compilación. Desde la raíz:
 python3 -m http.server 8000
 ```
 
-Abre http://localhost:8000. El catálogo se define en `app.js`; las tarjetas y sus duraciones visibles están en `index.html`. Los archivos Ogg originales incluyen alternativas MP3 para compatibilidad con navegadores.
+Abre http://localhost:8000. El catálogo se define en `app.js`; los botones de los discos están en `index.html`. Los archivos Ogg originales incluyen alternativas MP3 para compatibilidad con navegadores.
 
 ## GitHub Pages
 
