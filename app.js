@@ -3,6 +3,11 @@
 const tracks = [
   { id: 'lsm_march', title: 'Marcha Sanmartiniana', artist: 'Tobías Vílchez Pinedo' },
   { id: 'lsm_anthem', title: 'Himno Sanmartiniano', artist: 'Tobías Vílchez Pinedo' },
+  { id: 'carnaval_macari', title: 'Carnaval Macari', image: 'lsm_anthem' },
+  { id: 'carnaval_huanupampa', title: 'Carnaval Huanupampa', image: 'lsm_anthem' },
+  { id: 'carnaval_huaccana', title: 'Carnaval Huaccana', image: 'lsm_anthem' },
+  { id: 'cofradia_san_miguel', title: 'Cofradía San Miguel', image: 'lsm_anthem' },
+  { id: 'qapackachampa', title: 'Qapackachampa', image: 'lsm_anthem' },
 ];
 const audio = document.querySelector('#audio');
 const cards = [...document.querySelectorAll('[data-track]')];
@@ -93,12 +98,12 @@ function selectTrack(index) {
   audio.load();
   document.querySelector('#player-title').textContent = track.title;
   document.title = track.title;
-  document.querySelector('.title-bar img').src = `assets/images/${track.id}.png`;
+  document.querySelector('.title-bar img').src = `assets/images/${track.image || track.id}.png`;
   updateTimeline();
   updatePlayback();
   if ('mediaSession' in navigator && 'MediaMetadata' in window) {
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title, artist: track.artist, album: 'Colección sanmartiniana · LSM',
+      title: track.title, artist: track.artist || '', album: 'Colección sanmartiniana · LSM',
     });
   }
   void startPlayback();
