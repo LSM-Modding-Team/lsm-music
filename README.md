@@ -1,6 +1,6 @@
 # LSM Música
 
-Reproductor de audio que ocupa la pantalla disponible con controles clásicos de escritorio y la paleta del escudo del colegio: rojo `#a92724`, dorado `#c5942a`, marfil `#ebe7d9` y negro `#1e1c1a`. La interfaz solo muestra títulos y controles. Pulsa la imagen de un disco para escucharlo; vuelve a pulsarla para pausar o continuar. Incluye Marcha Sanmartiniana, Himno Sanmartiniano, Himno Nacional del Perú, Marcha de las Banderas y cinco danzas: 1ro - Carnaval de Macari, 2do - Carnaval de Huanupampa, 3ro - Carnaval de Huaccana, 4to - Cofradia de San Miguel y 5to - Qapac Kachampa. Los controles de reproducción, progreso y volumen permanecen visibles mientras se recorre la lista de discos.
+Reproductor de audio que ocupa la pantalla disponible con controles clásicos de escritorio y la paleta del escudo del colegio: rojo `#a92724`, dorado `#c5942a`, marfil `#ebe7d9` y negro `#1e1c1a`. La interfaz solo muestra títulos y controles. Pulsa la imagen de un disco para escucharlo; vuelve a pulsarla para pausar o continuar. Incluye Marcha Sanmartiniana, Himno Sanmartiniano, Himno Nacional del Perú, Marcha de las Banderas y cinco danzas: 1ro de Secundaria - Carnaval de Macari, 2do de Secundaria - Carnaval de Huanupampa, 3ro de Secundaria - Carnaval de Huaccana, 4to de Secundaria - Cofradia de San Miguel y 5to de Secundaria - Qapac Kachampa. Los controles de reproducción, progreso y volumen permanecen visibles mientras se recorre la lista de discos.
 
 **Sitio:** https://lsm-modding-team.github.io/lsm-music/
 
